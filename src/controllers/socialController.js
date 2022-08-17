@@ -1,9 +1,10 @@
 import api from "../service/api.js";
+import apiYoutube from '../service/apiYoutube.js'
 
 const getDownloadYoutube = async (req, res) => {
-    const video_link = req.query["video_link"];    
+    const url = req.query["url"];    
 
-    await api.get(`https://socialdownloader.p.rapidapi.com/api/youtube/video?video_link=${video_link}`).then((response) => {
+    await apiYoutube.get(`https://yt-downloader1.p.rapidapi.com/api?url=${url}`).then((response) => {
         console.log(JSON.stringify(response.data));
         return res.status(response.status).json(response.data);
 
